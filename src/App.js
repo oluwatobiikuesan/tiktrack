@@ -35,7 +35,7 @@ const [url, setURL] = useState("https://www.tiktok.com/@mary.elizabeth969/video/
         <main>
         <section>
         <h1>
-            YTExtractor
+            TKExtractor
             <sup>made simple.</sup>
         </h1>
         <div>

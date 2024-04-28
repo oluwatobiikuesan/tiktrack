@@ -22,6 +22,11 @@
         h1{
             text-align: center;
             color: #D92525;
+            background-size: cover;
+            background-image: url("https://img.freepik.com/free-photo/abstract-gradient-neon-lights_23-2149279137.jpg?size=626&ext=jpg");
+            background-clip: text;
+            background-position: bottom;
+            -webkit-text-fill-color: transparent;
             font-size: 100px;
         }
         h1 > sup{
@@ -49,10 +54,12 @@
             border: none;
             border-radius: 2px;
             padding: 10px 20px;
-            color: black;
+            color: white;
             font-weight: bold;
             background-color: #D92525;
             transition: 0.4s;
+            background-image: url("https://img.freepik.com/free-photo/abstract-gradient-neon-lights_23-2149279137.jpg?size=626&ext=jpg");
+            background-position: bottom;
         }
         button:hover{
             padding: 10px 40px;
