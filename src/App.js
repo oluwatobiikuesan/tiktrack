@@ -1,24 +1,35 @@
 import './App.css';
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useRef} from 'react'
 // This is the app function.
 function App() {
-    const url = "https://www.tiktok.com/@angeliclofiasmr/video/7342655196238990625?is_from_webapp=1&sender_device=pc"
-const apiGet = `http://localhost:5000/api?url=${encodeURIComponent(url)}`
-    const [backend, setBackend] = useState([{}])
+const intialValue = useRef(0);
+const [item, setItem] = useState([]);
+const [backend, setBackend] = useState([{}]);
+const [click, setClick] = useState(0)
+const [url, setURL] = useState("https://www.tiktok.com/@mary.elizabeth969/video/7338554237892185377?is_from_webapp=1&sender_device=pc");
     useEffect( () => {
-        fetch(apiGet)
+        fetch(`http://localhost:5000/api?url=${encodeURIComponent(url)}`)
         .then(Response => {
-            return Response.json()
+            return Response.json();
         })
         .then(data => {
             console.log(data)
             setBackend(data)
-            data.map(values =>{
-                document.write(`<p>${values.word}</p>`)
+            setItem(data)
+            item.map(val => {
+                console.log(val.word + " this")
             })
         })
         .catch(err => console.error("ewrrr"))
-    }, []) 
+    }, [click]) 
+
+    const PerformAction = () => {
+        setClick(click + 1)
+        setURL(`${intialValue.current.value}`)
+        alert(intialValue.current.value)
+      }
+
+  
   return (
     <div>
         <main>
@@ -27,11 +38,10 @@ const apiGet = `http://localhost:5000/api?url=${encodeURIComponent(url)}`
             YTExtractor
             <sup>made simple.</sup>
         </h1>
-        <marquee>check it out.</marquee>
         <div>
-            <input type="text" placeholder="paste a youtube link here."/>
+            <input type="text" placeholder="paste a youtube link here." ref={intialValue}/>
             <br/>
-            <button onClick={peformExtract} type="button">extract <i className="fa fa-key"></i></button>
+            <button onClick={PerformAction} type="button">extract <i className="fa fa-key"></i></button>
         </div>
         <div>
             <p>
@@ -40,9 +50,15 @@ const apiGet = `http://localhost:5000/api?url=${encodeURIComponent(url)}`
             <div className="tag-container">
                 <p>copy</p>
                 <div>
-                <span className="tags">#foryou</span>
-                <span className="tags">#foryou</span>
-                <span className="tags">#foryou</span>
+                    {item.map((val, index) => {
+                        console.log(val.word + " naso")
+                        return(
+                            <span key={index} className="tags">{val.word}</span>
+                        )
+                    })}
+                    
+                {/* <span className="tags">#foryou</span> */}
+                {/* <span className="tags">#foryou</span> */}
             </div>
             </div>
         </div>
@@ -51,12 +67,6 @@ const apiGet = `http://localhost:5000/api?url=${encodeURIComponent(url)}`
         </main>
     </div>
   );
-}
-
-function peformExtract(){
-  const url = "https://www.npmjs.com/package/axios"
-  const triggerBtn =  document.querySelector("input")
 
 }
-
 export default App;

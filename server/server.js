@@ -24,17 +24,15 @@ app.get("/api", (req, res)=> {
 
         const html = response.data
         const $ = cheerio.load(html)
-        
         let createHtmlArr = $(html).text()
         let sTage = createHtmlArr.split(`\"${videoID}\",\"desc\"`)[1]
         let rDynamicCover = sTage.split("dynamicCover")[0]
         let rCreateTime = rDynamicCover.split("createTime")[0]
-        let rExtra = rCreateTime.split("\",\"")[0]
+        let rExtra = rCreateTime.split("\",\"")[0].split(":\"")[1]
         rWhiteSpace = rExtra.split(" ").map((value) => {
             return value.trim()
         })
 
-        console.log(rWhiteSpace)
         for (let i = 0; i < rWhiteSpace.length;){
             let word = rWhiteSpace[i]
             if (word.includes("#")){
