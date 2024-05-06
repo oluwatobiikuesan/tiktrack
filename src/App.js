@@ -7,7 +7,7 @@ const [item, setItem] = useState([]);
 const [click, setClick] = useState(0)
 const [url, setURL] = useState("https://www.tiktok.com/@mary.elizabeth969/video/7338554237892185377?is_from_webapp=1&sender_device=pc");
     useEffect( () => {
-        fetch(`https://tiktok-server-tag.onrender.com/api?url=${encodeURIComponent(url)}`)
+        fetch(`https://tiktok-server-tag.onrender.com/api?url=${encodeURIComponent(url)}`, {mode: "no-cors"})
         .then(Response => {
             return Response.json();
         })
