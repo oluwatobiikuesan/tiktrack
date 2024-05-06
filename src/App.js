@@ -16,7 +16,7 @@ const [url, setURL] = useState("https://www.tiktok.com/@mary.elizabeth969/video/
             setItem(data)
         })
         .catch(err => console.error("ewrrr"))
-    }, [click]) 
+    }, [click, url]) 
 
     const PerformAction = () => {
         setClick(click + 1)
