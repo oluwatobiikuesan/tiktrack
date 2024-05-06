@@ -3,10 +3,10 @@ const axios = require("axios")
 const cheerio = require("cheerio")    
 const app = express()
 const cors = require("cors")
-const port = 5000
+const port = process.env.PORT || 5000
 app.use(cors({origin: "http://localhost:3000"}))
 
-const videoIDFunc = (url) =>  {
+function videoIDFunc(url){
     //gets the url id from the given url by the client
     let rBaseURL = url.split("video/")[1]
     let rEnd=  rBaseURL.split("?is")[0]
@@ -32,6 +32,7 @@ app.get("/api", (req, res)=> {
         rWhiteSpace = rExtra.split(" ").map((value) => {
             return value.trim()
         })
+        console.log(createHtmlArr)
 
         for (let i = 0; i < rWhiteSpace.length;){
             let word = rWhiteSpace[i]
@@ -44,10 +45,6 @@ app.get("/api", (req, res)=> {
 
 })
 })
-
-
-
-
 
 
 app.listen(port,  () =>{
