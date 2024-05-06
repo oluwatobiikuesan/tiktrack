@@ -14,17 +14,14 @@ const [url, setURL] = useState("https://www.tiktok.com/@mary.elizabeth969/video/
         .then(data => {
             console.log(data)
             setItem(data)
-            item.map(val => {
-                console.log(val.word + " this")
-            })
         })
         .catch(err => console.error("ewrrr"))
     }, [click]) 
 
     const PerformAction = () => {
         setClick(click + 1)
-        setURL(`${intialValue.current.value}`)
-        alert(intialValue.current.value)
+        setURL(intialValue.current.value)
+        alert(intialValue.current.valueOf)
       }
 
   return (
