@@ -43,8 +43,7 @@ const [url, setURL] = useState("https://www.tiktok.com/@mary.elizabeth969/video/
             </p>
             <div className="tag-container">
                 <div>
-                    {item.map((val, index) => {
-                        console.log(val.word + " naso")
+                    {item.map((val, index) =>{
                         return(
                             <span key={index} className="tags">{val.word}</span>
                         )
@@ -53,7 +52,7 @@ const [url, setURL] = useState("https://www.tiktok.com/@mary.elizabeth969/video/
                 {/* <span className="tags">#foryou</span> */}
                 {/* <span className="tags">#foryou</span> */}
             </div>
-            <button id='copybtn' type='button'>copy tags</button>
+            <button id='copybtn' type='button'>copy</button>
             </div>
         </div>
     <div/>
