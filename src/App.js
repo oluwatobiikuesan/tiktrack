@@ -1,7 +1,7 @@
 import './App.css';
 import {useState, useEffect, useRef} from 'react'
 const BaseURL = "https://tiktok-server-tag.onrender.com";
-const LocalURL = "http://localhost:5000";
+// const LocalURL = "http://localhost:5000";
 // This is the app function.
 function App() {
 // server url  => https://tiktok-server-tag.onrender.com
