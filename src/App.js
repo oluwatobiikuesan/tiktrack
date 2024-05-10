@@ -46,13 +46,13 @@ const [url, setURL] = useState("https://www.tiktok.com/@ibrahimalsalty92/video/7
             <sup>made simple.</sup>
         </h1>
         <div>
-            <input type="text" placeholder="paste a youtube link here." ref={intialValue}/>
+            <input type="text" placeholder="paste a tiktok link here." ref={intialValue}/>
             <br/>
             <button onClick={PerformAction} type="button">extract <i className="fa fa-key"></i></button>
         </div>
         <div className='about'>
             <p>
-                We made our service easy and straight forward for you to use. Making sure that you are able ti easily get tags from videos, and then use it to your advantage.
+                We made our service easy and straight forward for you to use. Making sure that you are able to easily get tags from videos, and then use it to your advantage.
             </p>
             <div className="tag-container">
                 <div>
