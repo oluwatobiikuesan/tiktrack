@@ -1,13 +1,16 @@
 import './App.css';
 import {useState, useEffect, useRef} from 'react'
+const BaseURL = "https://tiktok-server-tag.onrender.com";
+const LocalURL = "http://localhost:5000";
 // This is the app function.
 function App() {
+// server url  => https://tiktok-server-tag.onrender.com
 const intialValue = useRef(0);
 const [item, setItem] = useState([]);
 const [click, setClick] = useState(0)
 const [url, setURL] = useState("https://www.tiktok.com/@ibrahimalsalty92/video/7361202889294957842?is_from_webapp=1&sender_device=pc");
     useEffect( () => {
-        fetch(`https://tiktok-server-tag.onrender.com/api?url=${encodeURI(url)}`)
+        fetch(`${BaseURL}/api?url=${encodeURI(url)}`)
         .then(Response => {
             return Response.json();
         })
@@ -23,6 +26,16 @@ const [url, setURL] = useState("https://www.tiktok.com/@ibrahimalsalty92/video/7
         setURL(intialValue.current.value)
         alert(intialValue.current.value)
       }
+       async function copyContent(item){
+            var tagslines = ""
+            item.map(items =>{
+                var tags = tagslines += items.word + " ";
+                return tags
+            })
+            alert(tagslines)
+            await navigator.clipboard.writeText(tagslines)
+            tagslines = ""
+        }
 
   return (
     <div>
@@ -52,7 +65,7 @@ const [url, setURL] = useState("https://www.tiktok.com/@ibrahimalsalty92/video/7
                 {/* <span className="tags">#foryou</span> */}
                 {/* <span className="tags">#foryou</span> */}
             </div>
-            <button id='copybtn' type='button'>copy</button>
+            <button id='copybtn' type='button' onClick={() => copyContent(item)}>copy</button>
             </div>
         </div>
     <div/>
