@@ -32,7 +32,7 @@ const convertmUrl = (url) => {
             return Response.json();
         })
         .then(data => {
-            console.log(data)
+            // console.log(data)
             setItem(data)
         })
         .catch(err => console.error("There is an issue, we go soon resolve am!"))
@@ -42,11 +42,12 @@ const convertmUrl = (url) => {
         setClick(click + 1)
         if (intialValue.current.value.length <= 40){
             setURL(convertmUrl(intialValue.current.value))
+            alert("Please wait!")
         }
         else{
         convertmUrl(intialValue.current.value)
         setURL(intialValue.current.value)
-        alert(intialValue.current.value)
+        alert("Please wait!")
         }
       }
        async function copyContent(item){
@@ -55,7 +56,7 @@ const convertmUrl = (url) => {
                 var tags = tagslines += items.word + " ";
                 return tags
             })
-            alert(tagslines)
+            alert("copied!")
             await navigator.clipboard.writeText(tagslines)
             tagslines = ""
         }
