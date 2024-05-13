@@ -2,13 +2,30 @@ import './App.css';
 import {useState, useEffect, useRef} from 'react'
 const BaseURL = "https://tiktok-server-tag.onrender.com";
 // const LocalURL = "http://localhost:5000";
-// This is the app function.
+
 function App() {
 // server url  => https://tiktok-server-tag.onrender.com
 const intialValue = useRef(0);
 const [item, setItem] = useState([]);
 const [click, setClick] = useState(0)
 const [url, setURL] = useState("https://www.tiktok.com/@ibrahimalsalty92/video/7361202889294957842?is_from_webapp=1&sender_device=pc");
+
+const convertmUrl = (url) => {
+    var mID = url.split("tiktok.com/")[1].split("/")[0]
+    console.log(mID)
+    if (mID.length <= 9){
+        fetch(`https://iframe.ly/api/oembed?url=${url}&api_key=7050de4e80ceee8383fbeb`)
+        .then(res => {
+            return res.json();
+        })
+        .then(data => {
+            const url = data.url;
+            console.log(url)
+            setURL(url)
+        }).catch(console.error("there is an error here."));
+    }
+}
+
     useEffect( () => {
         fetch(`${BaseURL}/api?url=${encodeURI(url)}`)
         .then(Response => {
@@ -23,8 +40,14 @@ const [url, setURL] = useState("https://www.tiktok.com/@ibrahimalsalty92/video/7
 
     const PerformAction = () => {
         setClick(click + 1)
+        if (intialValue.current.value.length <= 40){
+            setURL(convertmUrl(intialValue.current.value))
+        }
+        else{
+        convertmUrl(intialValue.current.value)
         setURL(intialValue.current.value)
         alert(intialValue.current.value)
+        }
       }
        async function copyContent(item){
             var tagslines = ""
