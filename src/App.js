@@ -75,9 +75,12 @@ const convertmUrl = (url) => {
             <button onClick={PerformAction} type="button">extract <i className="fa fa-key"></i></button>
         </div>
         <div className='about'>
+            <span>
+                <p>The hashtag extractor.</p>
             <p>
                 We made our service easy and straight forward for you to use. Making sure that you are able to easily get tags from videos, and then use it to your advantage.
             </p>
+            </span>
             <div className="tag-container">
                 <div>
                     {item.map((val, index) =>{
